@@ -2,110 +2,139 @@ package blacksoftware.webvenda.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "item_pedido")
+@NamedQueries({
+    @NamedQuery(name = "ItemPedido.findAll", query = "select i from ItemPedido i")
+})
 public class ItemPedido implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5155213919662781638L;
-	@Id
-	@GeneratedValue
-	private Long id;
-	private int quantidade;
-	private int bonificacao;
-	private BigDecimal desconto;
-	@Column(name="preco_negociado")
-	private BigDecimal precoNegociado;
-	private BigDecimal total;
-	@ManyToOne
-	private Produto produto;
-	@ManyToOne
-	private Pedido pedido;
 
-	public ItemPedido() {
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 5155213919662781638L;
+    @Id
+    @GeneratedValue
+    private Long id;
+    private int quantidade;
+    private int bonificacao;
+    private BigDecimal desconto;
+    @Column(name = "preco_negociado")
+    private BigDecimal precoNegociado;
+    private BigDecimal total;
+    @ManyToOne
+    private Produto produto;
+    @ManyToOne
+    private Pedido pedido;
 
-	public ItemPedido(Long id, int quantidade, int bonificacao,
-			BigDecimal desconto, BigDecimal precoNegociado, BigDecimal total,
-			Produto produto, Pedido pedido) {
-		super();
-		this.id = id;
-		this.quantidade = quantidade;
-		this.bonificacao = bonificacao;
-		this.desconto = desconto;
-		this.precoNegociado = precoNegociado;
-		this.total = total;
-		this.produto = produto;
-		this.pedido = pedido;
-	}
+    public ItemPedido() {
+    }
 
-	public int getQuantidade() {
-		return quantidade;
-	}
+    public ItemPedido(Long id, int quantidade, int bonificacao,
+            BigDecimal desconto, BigDecimal precoNegociado, BigDecimal total,
+            Produto produto, Pedido pedido) {
+        super();
+        this.id = id;
+        this.quantidade = quantidade;
+        this.bonificacao = bonificacao;
+        this.desconto = desconto;
+        this.precoNegociado = precoNegociado;
+        this.total = total;
+        this.produto = produto;
+        this.pedido = pedido;
+    }
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+    public int getQuantidade() {
+        return quantidade;
+    }
 
-	public int getBonificacao() {
-		return bonificacao;
-	}
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	public void setBonificacao(int bonificacao) {
-		this.bonificacao = bonificacao;
-	}
+    public int getBonificacao() {
+        return bonificacao;
+    }
 
-	public BigDecimal getDesconto() {
-		return desconto;
-	}
+    public void setBonificacao(int bonificacao) {
+        this.bonificacao = bonificacao;
+    }
 
-	public void setDesconto(BigDecimal desconto) {
-		this.desconto = desconto;
-	}
+    public BigDecimal getDesconto() {
+        return desconto;
+    }
 
-	public BigDecimal getPrecoNegociado() {
-		return precoNegociado;
-	}
+    public void setDesconto(BigDecimal desconto) {
+        this.desconto = desconto;
+    }
 
-	public void setPrecoNegociado(BigDecimal precoNegociado) {
-		this.precoNegociado = precoNegociado;
-	}
+    public BigDecimal getPrecoNegociado() {
+        return precoNegociado;
+    }
 
-	public BigDecimal getTotal() {
-		return total;
-	}
+    public void setPrecoNegociado(BigDecimal precoNegociado) {
+        this.precoNegociado = precoNegociado;
+    }
 
-	public void setTotal(BigDecimal total) {
-		this.total = total;
-	}
+    public BigDecimal getTotal() {
+        return total;
+    }
 
-	public Produto getProduto() {
-		return produto;
-	}
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    public Produto getProduto() {
+        return produto;
+    }
 
-	public Pedido getPedido() {
-		return pedido;
-	}
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
+    public Pedido getPedido() {
+        return pedido;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ItemPedido other = (ItemPedido) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
 
 }

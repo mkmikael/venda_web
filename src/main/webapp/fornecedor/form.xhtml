@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Criar Fornecedor">
+            <p:growl showDetail="true" />
+            <h:form>
+                <h:inputHidden id="id" value="#{fornecedorBean.fornecedor.id}"/>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="codigo" value="Codigo" />
+                    <p:inputText id="codigo" value="#{fornecedorBean.fornecedor.codigo}"/>
+                    <p:outputLabel for="nome" value="Fornecedor" />
+                    <p:inputText id="nome" value="#{fornecedorBean.fornecedor.nome}"/>
+                    <p:outputLabel value="Grupos" for="grupos"/>
+                    <p:selectManyCheckbox id="grupos" value="${fornecedorBean.fornecedor.grupos}" converter="grupoConverter">
+                        <f:selectItems value="#{grupoBean.grupos}" var="g" itemLabel="${g.nome}" itemValue="${g}" />
+                    </p:selectManyCheckbox>
+                </h:panelGrid>
+                <p>
+                    <p:button value="Voltar" outcome="/fornecedor/list.html" />
+                    <p:commandButton ajax="false" value="Salvar" action="#{fornecedorBean.salvar}" />
+                </p>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

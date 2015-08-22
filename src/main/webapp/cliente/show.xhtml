@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Show Cliente">
+            <p>
+                <p:button value="Voltar" outcome="/cliente/list.xhtml"/>
+            </p>
+            <p:panelGrid columns="2">
+                <h:outputText value="codigo" />
+                <h:outputText value="#{clienteBean.cliente.codigo}" />
+                <h:outputText value="cnpj" />
+                <h:outputText value="#{clienteBean.cliente.cnpj}" />
+                <h:outputText value="razaoSocial" />
+                <h:outputText value="#{clienteBean.cliente.razaoSocial}" />
+                <h:outputText value="nomeFantasia" />
+                <h:outputText value="#{clienteBean.cliente.nomeFantasia}" />
+                <h:outputText value="endereco" />
+                <h:outputText value="#{clienteBean.cliente.endereco}" />
+                <h:outputText value="bairro" />
+                <h:outputText value="#{clienteBean.cliente.bairro}" />
+                <h:outputText value="referencia" />
+                <h:outputText value="#{clienteBean.cliente.referencia}" />
+                <h:outputText value="cidade" />
+                <h:outputText value="#{clienteBean.cliente.cidade}" />
+                <h:outputText value="inscricaoEstadual" />
+                <h:outputText value="#{clienteBean.cliente.inscricaoEstadual}" />
+                <h:outputText value="rate" />
+                <p:rating value="#{clienteBean.cliente.rate}" stars="5"/>
+                <h:outputText value="limite" />
+                <h:outputText value="#{clienteBean.cliente.limite}"/>
+                <h:outputText value="telefone" />
+                <h:outputText value="#{clienteBean.cliente.telefone}" />
+                <h:outputText value="responsavel" />
+                <h:outputText value="#{clienteBean.cliente.responsavel}" />
+                <h:outputText value="situacao" />
+                <h:outputText value="#{clienteBean.cliente.situacao}"/>
+                <h:outputText value="canal" />
+                <h:outputText value="#{clienteBean.cliente.canal.nome}" />
+                <h:outputText value="ramo" />
+                <h:outputText value="#{clienteBean.cliente.ramo.nome}"  />
+            </p:panelGrid>
+        </p:panel>
+    </ui:define>
+</ui:composition>

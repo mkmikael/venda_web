@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Listagem de Produto">
+            <p:growl showDetail="true" />
+            <p>
+                <p:button value="Criar Produto" outcome="/produto/form.xhtml" />
+            </p>
+            <h:form>
+                <p:dataTable id="produtoList" value="#{produtoBean.produtos}" var="produto" emptyMessage="Sem registros.">
+                    <p:column headerText="codigo">
+                        <h:outputText value="#{produto.codigo}" />
+                    </p:column>
+                    <p:column headerText="nome">
+                        <h:outputText value="#{produto.nome}" />
+                    </p:column>
+                    <p:column headerText="fornecedor">
+                        <h:outputText value="#{produto.fornecedor.nome}" />
+                    </p:column>
+                    <p:column headerText="grupo">
+                        <h:outputText value="#{produto.grupo.nome}" />
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-pencil" action="/produto/form.xhtml">
+                            <f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-trash" action="#{produtoBean.deletar}">
+                            <f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

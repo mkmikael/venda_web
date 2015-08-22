@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Listagem de Fornecedor">
+            <p:growl showDetail="true" />
+            <p>
+                <p:button value="Criar Fornecedor" outcome="/fornecedor/form.xhtml" />
+            </p>
+            <h:form>
+                <p:dataTable id="fornecedorList" value="#{fornecedorBean.fornecedores}" var="fornecedor" emptyMessage="Sem registros.">
+                    <p:column headerText="+" width="40">
+                        <p:rowToggler />
+                    </p:column>
+                    <p:column headerText="codigo">
+                        <h:outputText value="#{fornecedor.codigo}" />
+                    </p:column>
+                    <p:column headerText="nome">
+                        <h:outputText value="#{fornecedor.nome}" />
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-pencil" action="/fornecedor/form.xhtml">
+                            <f:setPropertyActionListener value="#{fornecedor}" target="#{fornecedorBean.fornecedor}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-trash" action="#{fornecedorBean.deletar}">
+                            <f:setPropertyActionListener value="#{fornecedor}" target="#{fornecedorBean.fornecedor}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:rowExpansion>
+                        <p:dataTable value="#{fornecedor.grupos}" var="grupo" emptyMessage="Sem grupos.">
+                            <p:column headerText="Grupos">
+                                #{grupo.nome}
+                            </p:column>
+                        </p:dataTable>
+                    </p:rowExpansion>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

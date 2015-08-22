@@ -1,4 +1,4 @@
-package blacksoftware.webvenda.model;
+package blacksoftware.webvenda.dao;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

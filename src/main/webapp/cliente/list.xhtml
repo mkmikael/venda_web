@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Listagem de Cliente">
+            <p:growl showDetail="true" />
+            <p>
+                <p:button value="Criar Cliente" outcome="/cliente/form.xhtml" />
+            </p>
+            <h:form prependId="false">
+                <p:dataTable id="clienteList" value="#{clienteBean.clientes}" var="cliente" emptyMessage="Sem registros.">
+                    <p:column headerText="codigo" width="120">
+                        <h:outputText value="#{cliente.codigo}" />
+                    </p:column>
+                    <p:column headerText="nomeFantasia">
+                        <h:outputText value="#{cliente.nomeFantasia}" />
+                    </p:column>
+                    <p:column headerText="situacao" width="130">
+                        <h:outputText value="#{cliente.situacao}" />
+                    </p:column>
+                    <p:column headerText="limite" width="100">
+                        <h:outputText value="#{cliente.limite}" />
+                    </p:column>
+                    <p:column headerText="telefone" width="140">
+                        <h:outputText value="#{cliente.telefone}" />
+                    </p:column>
+                    <p:column headerText="responsavel">
+                        <h:outputText value="#{cliente.responsavel}" />
+                    </p:column>
+                    <p:column width="45">
+                        <p:commandButton ajax="false" icon="ui-icon-pencil" action="/cliente/form.xhtml">
+                            <f:setPropertyActionListener value="#{cliente}" target="#{clienteBean.cliente}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column width="45">
+                        <p:commandButton ajax="false" icon="ui-icon-trash" action="#{clienteBean.deletar}">
+                            <f:setPropertyActionListener value="#{cliente}" target="#{clienteBean.cliente}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column width="45">
+                        <p:commandButton ajax="false" icon="ui-icon-search" action="/cliente/show.xhtml">
+                            <f:setPropertyActionListener value="#{cliente}" target="#{clienteBean.cliente}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

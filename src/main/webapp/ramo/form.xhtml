@@ -1,22 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/layout/main.xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
-	<ui:define name="content">
-		<p:panel header="Criar Ramo">
-			<h:form>
-				<h:inputHidden value="#{ramoBean.ramo.id}" />
-				<h:panelGrid columns="2">
-					<p:outputLabel for="codigo" value="Codigo" />
-					<p:inputText id="codigo" value="#{ramoBean.ramo.codigo}" />
-					<p:outputLabel for="nome" value="Nome" />
-					<p:inputText id="nome" value="#{ramoBean.ramo.nome}" />
-				</h:panelGrid>
-				<p>
-					<p:button value="Voltar" outcome="/ramo/list.xhtml" />
-					<p:commandButton value="Salvar" action="#{ramoBean.salvar}" />
-				</p>
-			</h:form>
-		</p:panel>
-	</ui:define>
+                template="/layout/main.xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <p:panel header="Criar Ramo">
+            <p:growl showDetail="true"/>
+            <h:form>
+                <h:inputHidden value="#{ramoBean.ramo.id}" />
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="codigo" value="Codigo" />
+                    <p:inputText id="codigo" value="#{ramoBean.ramo.codigo}" />
+                    <p:outputLabel for="nome" value="Nome" />
+                    <p:inputText id="nome" value="#{ramoBean.ramo.nome}" />
+                </h:panelGrid>
+                <p>
+                    <p:button value="Voltar" outcome="/ramo/list.xhtml" />
+                    <p:commandButton ajax="false" value="Salvar" action="#{ramoBean.salvar}" />
+                </p>
+            </h:form>
+        </p:panel>
+    </ui:define>
 </ui:composition>

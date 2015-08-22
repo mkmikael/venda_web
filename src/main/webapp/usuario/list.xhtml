@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Listagem de Usuario">
+            <p:growl showDetail="true" />
+            <p>
+                <p:button value="Criar Usuario" outcome="/usuario/form.xhtml" />
+            </p>
+            <h:form>
+                <p:dataTable id="usuarioList" value="#{usuarioBean.usuarios}" var="usuario" emptyMessage="Sem registros.">
+                    <p:column headerText="nome">
+                        <h:outputText value="#{usuario.nome}" />
+                    </p:column>
+                    <p:column headerText="login">
+                        <h:outputText value="#{usuario.login}" />
+                    </p:column>
+                    <p:column headerText="senha">
+                        ************
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-pencil" action="/usuario/form.xhtml">
+                            <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.usuario}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-trash" action="#{usuarioBean.deletar}">
+                            <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.usuario}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

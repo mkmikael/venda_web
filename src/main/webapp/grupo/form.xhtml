@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Criar Grupo">
+            <p:growl showDetail="true" />
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="nome" value="Grupo" />
+                    <p:inputText id="nome" value="#{grupoBean.grupo.nome}" required="true" requiredMessage="O campo grupo e obrigatorio"/>
+                </h:panelGrid>
+                <p>
+                    <p:button value="Voltar" outcome="/grupo/list.html" />
+                    <p:commandButton ajax="false" value="Salvar" action="#{grupoBean.salvar}" />
+                </p>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

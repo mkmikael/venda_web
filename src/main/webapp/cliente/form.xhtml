@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Criar Cliente">
+            <p:growl showDetail="true" />
+            <h:form>
+                <h:inputHidden id="id" value="#{clienteBean.cliente.id}"/>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="codigo" value="codigo" />
+                    <p:inputText id="codigo" value="#{clienteBean.cliente.codigo}" />
+                    <p:outputLabel for="cnpj" value="cnpj" />
+                    <p:inputText id="cnpj" value="#{clienteBean.cliente.cnpj}" />
+                    <p:outputLabel for="razaoSocial" value="razaoSocial" />
+                    <p:inputText id="razaoSocial" value="#{clienteBean.cliente.razaoSocial}" />
+                    <p:outputLabel for="nomeFantasia" value="nomeFantasia" />
+                    <p:inputText id="nomeFantasia" value="#{clienteBean.cliente.nomeFantasia}" />
+                    <p:outputLabel for="endereco" value="endereco" />
+                    <p:inputText id="endereco" value="#{clienteBean.cliente.endereco}" />
+                    <p:outputLabel for="bairro" value="bairro" />
+                    <p:inputText id="bairro" value="#{clienteBean.cliente.bairro}" />
+                    <p:outputLabel for="referencia" value="referencia" />
+                    <p:inputText id="referencia" value="#{clienteBean.cliente.referencia}" />
+                    <p:outputLabel for="cidade" value="cidade" />
+                    <p:inputText id="cidade" value="#{clienteBean.cliente.cidade}" />
+                    <p:outputLabel for="inscricaoEstadual" value="inscricaoEstadual" />
+                    <p:inputText id="inscricaoEstadual" value="#{clienteBean.cliente.inscricaoEstadual}" />
+                    <p:outputLabel for="rate" value="rate" />
+                    <p:rating id="rate" value="#{clienteBean.cliente.rate}" />
+                    <p:outputLabel for="limite" value="limite" />
+                    <p:spinner id="limite" value="#{clienteBean.cliente.limite}"/>
+                    <p:outputLabel for="telefone" value="telefone" />
+                    <p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}" mask="(99)99999-9999" placeholder="(__) _____-____"/>
+                    <p:outputLabel for="responsavel" value="responsavel" />
+                    <p:inputText id="responsavel" value="#{clienteBean.cliente.responsavel}" />
+                    
+                    <p:outputLabel for="situacao" value="situacao" />
+                    <p:selectOneMenu id="situacao" value="#{clienteBean.cliente.situacao}">
+                        <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="EM DIA" itemValue="EM_DIA"/>
+                        <f:selectItem itemLabel="VENCIDO" itemValue="VENCIDO"/>
+                        <f:selectItem itemLabel="A VENCER" itemValue="AVENCER"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel for="canal" value="canal" />
+                    <p:selectOneMenu id="canal" value="#{clienteBean.cliente.canal}"  converter="canalConverter">
+                        <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                        <f:selectItems value="#{canalBean.canais}" var="canal" itemLabel="#{canal.nome}" itemValue="#{canal}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel for="ramo" value="ramo" />
+                    <p:selectOneMenu id="ramo" value="#{clienteBean.cliente.ramo}" converter="ramoConverter">
+                        <f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+                        <f:selectItems value="#{ramoBean.ramos}" var="ramo" itemLabel="#{ramo.nome}" itemValue="#{ramo}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <p>
+                    <p:button value="Voltar" outcome="/cliente/list.html" />
+                    <p:commandButton ajax="false" value="Salvar" action="#{clienteBean.salvar}" />
+                </p>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

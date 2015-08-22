@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="/layout/main.xhtml">
+    <ui:define name="content">
+        <p:panel header="Listagem de Grupo">
+            <p:growl showDetail="true" />
+            <p>
+                <p:button value="Criar Grupo" outcome="/grupo/form.xhtml" />
+            </p>
+            <h:form>
+                <p:dataTable id="grupoList" value="#{grupoBean.grupos}" var="grupo" emptyMessage="Sem registros.">
+                    <p:column headerText="Grupo">
+                        <h:outputText value="#{grupo.nome}" />
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-pencil" action="/grupo/form.xhtml">
+                            <f:setPropertyActionListener value="#{grupo}" target="#{grupoBean.grupo}" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column width="85">
+                        <p:commandButton ajax="false" icon="ui-icon-trash" action="#{grupoBean.deletar}">
+                            <f:setPropertyActionListener value="#{grupo}" target="#{grupoBean.grupo}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>
